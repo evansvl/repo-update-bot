@@ -170,7 +170,7 @@ async def scheduled_checker():
                         logging.info(f"New release found for {config['repo']}: {latest_release.get('name')}")
                         if config.get("last_release_id") is not None:
                             message_text = (
-                                f"🎉 *New Release: {latest_release.get('name')}*\n\n"
+                                f"*New Release: {latest_release.get('name')}*\n\n"
                                 f"**Repository**: `{config['repo']}`\n"
                                 f"**Tag**: `{latest_release.get('tag_name')}`\n\n"
                                 f"[View Release on GitHub]({latest_release.get('html_url')})"

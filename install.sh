@@ -36,22 +36,28 @@ fi
 
 cd "$PROJECT_DIR" || print_error "Failed to enter project directory."
 
-print_info "Please provide your Telegram Bot credentials."
-read -p "Enter your Telegram Bot Token: " TELEGRAM_BOT_TOKEN
-read -p "Enter your numeric Telegram User ID (This will be the Admin): " ADMIN_ID
 
-if [ -z "$TELEGRAM_BOT_TOKEN" ] || ! [[ "$ADMIN_ID" =~ ^[0-9]+$ ]]; then
-    print_error "Bot Token cannot be empty and Admin ID must be a valid number. Aborting."
-fi
+if [ -f ".env" ]; then
+    print_info "Found existing .env file. Skipping credential entry and using the current secrets."
+else
+    print_info "No .env file found. Please provide your Telegram Bot credentials."
+    read -p "Enter your Telegram Bot Token: " TELEGRAM_BOT_TOKEN
+    read -p "Enter your numeric Telegram User ID (This will be the Admin): " ADMIN_ID
 
-print_info "Creating .env file with your secrets..."
-cat << EOF > .env
+    if [ -z "$TELEGRAM_BOT_TOKEN" ] || ! [[ "$ADMIN_ID" =~ ^[0-9]+$ ]]; then
+        print_error "Bot Token cannot be empty and Admin ID must be a valid number. Aborting."
+    fi
+
+    print_info "Creating .env file with your secrets..."
+    cat << EOF > .env
 # This file contains secrets and is loaded by docker-compose.
 # It should NOT be committed to Git.
 
 TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
 ADMIN_ID=${ADMIN_ID}
 EOF
+    print_success ".env file created."
+fi
 
 print_info "Stopping any old containers to prevent conflicts..."
 docker-compose down --remove-orphans
