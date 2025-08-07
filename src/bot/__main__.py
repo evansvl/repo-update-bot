@@ -8,7 +8,7 @@ from contextlib import suppress
 import aiohttp
 from aiogram import Bot, Dispatcher, F, types
 from aiogram.exceptions import TelegramBadRequest
-from aiogram.filters import Command, StateFilter
+from aiogram.filters import Command, StateFilter, BaseFilter
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 from dotenv import load_dotenv
@@ -34,8 +34,8 @@ bot = Bot(token=TELEGRAM_BOT_TOKEN)
 dp = Dispatcher()
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-class AdminFilter(F):
-    def __call__(self, message: types.Message) -> bool:
+class AdminFilter(BaseFilter):
+    async def __call__(self, message: types.Message) -> bool:
         return message.from_user.id == ADMIN_ID
 
 class SetupForm(StatesGroup):
