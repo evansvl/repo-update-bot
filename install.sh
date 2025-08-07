@@ -72,5 +72,3 @@ if [ "$(docker-compose ps -q)" ]; then
 else
     print_error "The container failed to start. Check the build logs above or run 'docker-compose logs' for details."
 fi
-
-cd repo-update-bot
