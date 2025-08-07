@@ -2,9 +2,10 @@
 <h1>🤖 GitHub Release Monitor Bot</h1>
 <p>A simple, self-hosted Telegram bot to get notifications about new GitHub releases.</p>
 <p>
-<a href="##-one-command-installation--updates">Installation & Updates</a> •
-<a href="##-bot-management">Management</a> •
-<a href="##-contributing">Contributing</a>
+<a href="https://github.com/evansvl/repo-update-bot/edit/main/README.md#%EF%B8%8F-one-command-installation--updates">Installation & Updates</a> •
+<a href="https://github.com/evansvl/repo-update-bot/edit/main/README.md#-bot-management">Management</a> •
+<a href="https://github.com/evansvl/repo-update-bot/edit/main/README.md#-contributing--bug-reports">Contributing</a> •
+<a href="https://github.com/evansvl/repo-update-bot/edit/main/README.md#-support-project">Support project</a>
 </p>
 
 
