@@ -95,7 +95,7 @@ async def process_repo(message: types.Message, state: FSMContext):
         f"Great! I'll monitor `{repo}`.\n\n"
         "Now, add this bot as an **administrator** to your Telegram channel "
         "with permission to 'Post messages'.\n\n"
-        "Once done, send me the channel's username (e.g., `@yourchannel`) or its public link.",
+        "Once done, send me the channel's username (e.g., `@yourchannel`)",
         parse_mode="Markdown"
     )
     await state.set_state(SetupForm.waiting_for_channel)
@@ -134,7 +134,7 @@ async def process_channel(message: types.Message, state: FSMContext):
     save_configs(configs)
 
     await message.reply(
-        f"✅ Success! I will now monitor the `{repo}` repository and post new releases to the **{chat.title}** channel."
+        f"✅ Success! I will now monitor the `{repo}` repository and post new releases to the <b>{chat.title}</b> channel."
     )
     await state.clear()
 
